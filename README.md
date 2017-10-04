@@ -5,6 +5,8 @@ CSV data file generator Java tool for testing BigData stuff like Data Visualizat
 
 * Better to use it with a machine (PC, Notebook) equipped of 4GB RAM (Linux or Ms-Windows).
 
+* No installations are required, just copy Java JAR file to your machine and run it from command-line window/Terminal.
+
 Quick small command-line tool to generate CSV dummy data files for testing BigData Data Visualizations tools like 
 Tableau, Ms-PowerBI, Tibco Spotfire v7, etc. Or can be used for any BI programming language like R or Python for data load-testing.
 It uses 7 CSV columns and fake data is inside it like (id, first name, last name, age, city, district, country).
