@@ -3,6 +3,8 @@ CSV data file generator Java tool for testing BigData stuff like Data Visualizat
 
 * In less than 10 seconds, you can generate a CSV data file of 5 million CSV rows (i.e. 7 columns data)
 
+* Better to use it with a machine (PC, Notebook) equipped of 4GB RAM (Linux or Ms-Windows).
+
 Quick small command-line tool to generate CSV dummy data files for testing BigData Data Visualizations tools like 
 Tableau, Ms-PowerBI, Tibco Spotfire v7, etc. Or can be used for any BI programming language like R or Python for data load-testing.
 It uses 7 CSV columns and fake data is inside it like (id, first name, last name, age, city, district, country).
@@ -10,11 +12,12 @@ It uses 7 CSV columns and fake data is inside it like (id, first name, last name
 Program usage (built with Oracle JDK 1.8):
 
     java -jar CsvDataGeneratorTool_Project.jar <,||;> 
-    Example usage: java -jar CsvDataGeneratorTool_Project.jar 10000000 ,
+    Example usage: java -jar CsvDataGeneratorTool_Project.jar 10000000 , <Enter>
 
 For JVM heap performance issues, please run it with this JVM memory arguments:
 
-    java -Xmx100g -jar CsvDataGeneratorTool_Project.jar 15000000 ,
+    java -Xmx100g -jar CsvDataGeneratorTool_Project.jar 15000000 , <Enter> or
+    java -Xmx250g -jar CsvDataGeneratorTool_Project.jar 20000000
 
 Thank you for using my small CSV data file generation tool. 
 (c)2017 October - Mohee Jarada. E-Mail: jarada.mohee@gmail.com
