@@ -9,12 +9,13 @@ It uses 7 CSV columns and fake data is inside it like (id, first name, last name
 
 Program usage (built with Oracle JDK 1.8):
 
-    java -jar CsvDataGeneratorTool_Project.jar <,||;> Example usage: java -jar CsvDataGeneratorTool_Project.jar 10000000 ,
+    java -jar CsvDataGeneratorTool_Project.jar <,||;> 
+    Example usage: java -jar CsvDataGeneratorTool_Project.jar 10000000 ,
 
 For JVM heap performance issues, please run it with this JVM memory arguments:
 
     java -Xmx100g -jar CsvDataGeneratorTool_Project.jar 15000000 ,
 
-Thank you for using my small CSV data file generation tool. (c)2017 October - Mohee Jarada
-E-Mail: jarada.mohee@gmail.com
+Thank you for using my small CSV data file generation tool. 
+(c)2017 October - Mohee Jarada. E-Mail: jarada.mohee@gmail.com
 
