@@ -21,10 +21,7 @@ public class CsvDataGeneratorTool_MainClass {
      */
     public static void main(String[] args) {
 
-        if (args != null && args.length == 2) {
-            
-            System.out.println("CSV data file generation process is started....");
-            
+        if (args != null && args.length == 2) {            
             String csvFileNameStr = "";
             PrintWriter pw;
             long m1 = System.currentTimeMillis();
@@ -39,85 +36,109 @@ public class CsvDataGeneratorTool_MainClass {
             countryList.add("Romania");
 
             int intRandom = 0;
+            boolean isNotWrongProgramUsage = false;
+            long rowsNeededRef = 0;
 
             try {
-                long rowsNeededRef = Long.parseLong(args[0]);
-                char separaterCharRef = args[1].charAt(0); // comma or semicolon
+                rowsNeededRef = Long.parseLong(args[0]);
+                String charStrRef = args[1];
+                char separaterCharRef = charStrRef.charAt(0); // comma or semicolon
                 
-                csvFileNameStr = System.getProperty("user.home")
-                        + "/CsvDataFile_" + rowsNeededRef + "_recs.csv";
+                System.out.println(separaterCharRef == ';');
+                              
+                if ((separaterCharRef != ',' && separaterCharRef != ';') && rowsNeededRef > 0) {
+                    isNotWrongProgramUsage = true;
+                    System.err.println(">>>>>>>>>Error in tool usage: comma or semicolon should used in 2nd command line argument...");
+                    CsvDataGeneratorTool_MainClass.showProgramUsageMessageToUser();
+                } // end if for handling comma or semicolon in 2nd command line argument
+                                
+                if (!isNotWrongProgramUsage) {
+                    csvFileNameStr = System.getProperty("user.home")
+                            + "/CsvDataFile_" + rowsNeededRef + "_recs.csv";
 
-                // PrintWriter by default is buffered:
-                pw = new PrintWriter(new File(csvFileNameStr));
+                    // PrintWriter by default is buffered:
+                    pw = new PrintWriter(new File(csvFileNameStr));
 
-                // StringBuilder is faster than StringBuffer:
-                StringBuilder sb = new StringBuilder();
+                    System.out.println("CSV data file generation process is started....");
 
-                sb.append("id");
-                sb.append(separaterCharRef);
-                sb.append("First_Name");
-                sb.append(separaterCharRef);
-                sb.append("Last_Name");
-                sb.append(separaterCharRef);
-                sb.append("Age");
-                sb.append(separaterCharRef);
-                sb.append("City");
-                sb.append(separaterCharRef);
-                sb.append("District");
-                sb.append(separaterCharRef);
-                sb.append("Country");
-                sb.append('\n');
+                    // StringBuilder is faster than StringBuffer:
+                    StringBuilder sb = new StringBuilder();
 
-                double randRef;
-
-                for (int index = 1; index <= rowsNeededRef; index++) {
-                    sb.append(index);
+                    sb.append("id");
                     sb.append(separaterCharRef);
-                    sb.append("XYZf").append(index);
+                    sb.append("First_Name");
                     sb.append(separaterCharRef);
-                    sb.append("KwCNJrXYZ").append(index);
+                    sb.append("Last_Name");
                     sb.append(separaterCharRef);
-                    
-                    randRef = Math.random() * 100 + 1;
-                    sb.append(Math.round(randRef));
+                    sb.append("Age");
                     sb.append(separaterCharRef);
+                    sb.append("City");
+                    sb.append(separaterCharRef);
+                    sb.append("District");
+                    sb.append(separaterCharRef);
+                    sb.append("Country");
+                    sb.append('\n');
 
-                    intRandom = (int) (Math.random() * 3);
+                    double randRef;
 
-                    sb.append(cityList.get(intRandom));
-                    sb.append(separaterCharRef);
-                    
-                    sb.append("districtNo" + index);
-                    sb.append(separaterCharRef);
-                    sb.append(countryList.get(intRandom));
+                    for (int index = 1; index <= rowsNeededRef; index++) {
+                        sb.append(index);
+                        sb.append(separaterCharRef);
+                        sb.append("XYZf").append(index);
+                        sb.append(separaterCharRef);
+                        sb.append("KwCNJrXYZ").append(index);
+                        sb.append(separaterCharRef);
 
-                    if (index != rowsNeededRef) {
-                        sb.append('\n');
-                    } // end if
-                } // end for loop
+                        randRef = Math.random() * 100 + 1;
+                        sb.append(Math.round(randRef));
+                        sb.append(separaterCharRef);
 
-                pw.write(sb.toString());
-                pw.flush();
-                pw.close();
-                
-                System.out.println("CSV file created and reside at: " + csvFileNameStr);
-                System.out.println("CSV file separator character used: " + separaterCharRef);
-                System.out.println("Total CSV data rows created now: " + rowsNeededRef + " records");
-                
-            } catch (FileNotFoundException e) {
-                System.err.println("Exception in coding:\n" + e.getMessage());
+                        intRandom = (int) (Math.random() * 3);
+
+                        sb.append(cityList.get(intRandom));
+                        sb.append(separaterCharRef);
+
+                        sb.append("districtNo" + index);
+                        sb.append(separaterCharRef);
+                        sb.append(countryList.get(intRandom));
+
+                        if (index != rowsNeededRef) {
+                            sb.append('\n');
+                        } // end if
+                    } // end for loop
+
+                    pw.write(sb.toString());
+                    pw.flush();
+                    pw.close();
+
+                    System.out.println("CSV file created and reside at: " + csvFileNameStr);
+                    System.out.println("CSV file separator character used: " + separaterCharRef);
+                    System.out.println("Total CSV data rows created now: " + rowsNeededRef + " records");
+
+                } // end if !wrongUsage
+            } catch (FileNotFoundException | NumberFormatException exceptionRef) {
+                System.err.println(">>>>>>>>>Exception in tool usage: integer number should used in 1st command line argument and > zero...");
+                System.err.println(">>>>>>>>>Exception message: " + exceptionRef);
+                CsvDataGeneratorTool_MainClass.showProgramUsageMessageToUser();
             } // end catch
 
-            long m2 = System.currentTimeMillis();
-            System.out.println("CSV data file generation is done successfully and took: " + ((m2 - m1) / 1000) + " seconds");            
+            if ((!isNotWrongProgramUsage) && (rowsNeededRef > 0)) {
+                long m2 = System.currentTimeMillis();
+                System.out.println("CSV data file generation is done successfully and took: " + ((m2 - m1) / 1000) + " seconds");
+            } // end if
         } // end if for having command line argument
         else {
-           System.out.println("Program usage:\n >java -jar CsvDataGeneratorTool_Project.jar <total rows to generate in CSV file> <,||;>");
-           System.out.println("Example usage:\n >java -jar CsvDataGeneratorTool_Project.jar 10000000 ,\n");
-           System.out.println("For JVM heap performance issues, please run it with this JVM memory arguments:");
-           System.out.println(">java -Xmx200g -jar CsvDataGeneratorTool_Project.jar 15000000 ,\n");
-           System.out.println("Thank you for using my small CSV data file generation tool. (c)2017 October - Mohee Jarada <Budapest-Hungary>");
+            CsvDataGeneratorTool_MainClass.showProgramUsageMessageToUser();
         } // end else
-        
-    } // end main()    
+    } // end main()  
+
+    private static void showProgramUsageMessageToUser() {
+        System.out.println("==================================================");
+        System.out.println("Program usage:\n >java -jar CsvDataGeneratorTool_Project.jar <total rows to generate in CSV file> <comma or semicolon>");
+        System.out.println("Example usage:\n >java -jar CsvDataGeneratorTool_Project.jar 10000000 ,\n");
+        System.out.println("For JVM heap performance issues, please run it with this JVM memory arguments:");
+        System.out.println(">java -Xmx200g -jar CsvDataGeneratorTool_Project.jar 15000000 ,\n");
+        System.out.println("Thank you for using my small CSV data file generation tool. (c)2017 October - Mohee Jarada <Budapest-Hungary>");
+        System.out.println("==================================================");
+    } // end showProgramUsageMessageToUser
 } // end class
