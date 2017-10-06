@@ -21,7 +21,7 @@ public class CsvDataGeneratorTool_MainClass {
      */
     public static void main(String[] args) {
 
-        if (args != null && args.length == 2) {            
+        if (args != null && args.length == 2) {
             String csvFileNameStr = "";
             PrintWriter pw;
             long m1 = System.currentTimeMillis();
@@ -43,15 +43,13 @@ public class CsvDataGeneratorTool_MainClass {
                 rowsNeededRef = Long.parseLong(args[0]);
                 String charStrRef = args[1];
                 char separaterCharRef = charStrRef.charAt(0); // comma or semicolon
-                
-                System.out.println(separaterCharRef == ';');
-                              
+
                 if ((separaterCharRef != ',' && separaterCharRef != ';') && rowsNeededRef > 0) {
                     isNotWrongProgramUsage = true;
                     System.err.println(">>>>>>>>>Error in tool usage: comma or semicolon should used in 2nd command line argument...");
                     CsvDataGeneratorTool_MainClass.showProgramUsageMessageToUser();
                 } // end if for handling comma or semicolon in 2nd command line argument
-                                
+
                 if (!isNotWrongProgramUsage) {
                     csvFileNameStr = System.getProperty("user.home")
                             + "/CsvDataFile_" + rowsNeededRef + "_recs.csv";
