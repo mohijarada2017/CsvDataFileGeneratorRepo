@@ -2,7 +2,7 @@
 CSV fake data file generator Java tool for testing BigData stuff like Data Visualizations (DV), BI tools' performance, etc.
 Attached PDF presentation benchmarking guide, how tool was used with different DV tools.
 
-* In less than 10 seconds, you can generate a CSV data file of 5 million CSV rows (i.e. 7 columns data)
+* In less than 5 seconds, you can generate a CSV data file of 5 million CSV rows (i.e. having fake data of 7 columns)
 
 * Better to use it with a machine (PC, Notebook) equipped of 4GB RAM (Linux or Ms-Windows).
 
