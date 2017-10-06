@@ -4,7 +4,7 @@ Attached PDF presentation benchmarking guide, how tool was used with different D
 
 * In less than 5 seconds, you can generate a CSV data file of 5 million CSV rows (i.e. having fake data of 7 columns)
 
-* Better to use it with a machine (PC, Notebook) equipped of 4GB or more RAM (Linux or Ms-Windows).
+* Better to use it with a machine (PC, Notebook) equipped with 4GB or more RAM (Linux or Ms-Windows).
 
 * No installations are required, just copy Java JAR file to your machine and run it from command-line window/Terminal. Please make sure to install JRE v8+ in prior.
 
