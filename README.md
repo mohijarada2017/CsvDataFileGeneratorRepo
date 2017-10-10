@@ -19,9 +19,8 @@ Program usage (built with Oracle JDK 1.8):
 
 For JVM heap performance issues, please run it with this JVM memory arguments:
 
-    java -Xmx100g -jar CsvDataGeneratorTool_Project.jar 15000000 ,
-    java -Xmx250g -jar CsvDataGeneratorTool_Project.jar 20000000 ,
-    java -Xmx500g -jar CsvDataGeneratorTool_Project.jar 50000000 ,
+    java -Xmx100g -jar CsvDataGeneratorTool_Project.jar 15000000 , // will generate 15 millions records of CSV data file
+    java -Xmx250g -jar CsvDataGeneratorTool_Project.jar 20000000 , // will generate 20 millions records of CSV data file
 
 Thank you for using my small CSV fake data file generation tool.<br/>
 (c)2017 October - Mohee Jarada. E-Mail: jarada.mohee@gmail.com
